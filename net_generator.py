@@ -345,7 +345,7 @@ class Net:
 
     #************************** networks **************************
     def resnet_cifar(self, n=3):
-        """6n+2"""
+        """6n+2, n=3 9 18 coresponds to 20 56 110 layers"""
         num_output = 16
         self.conv_bn_relu('first_conv', num_output=num_output)
         for i in range(3):
