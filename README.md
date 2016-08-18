@@ -5,8 +5,7 @@
 4. use [train.sh](train.sh) to train it
 5. use [plot.py](plot.py) to generate beautful loss plots
 
-###### results are consistent with original paper
-seems there's no much difference between resnet-20 and plain-20
+### results are consistent with original paper
+seems there's no much difference between resnet-20 and plain-20. However, from the second plot, you can see that plain-110 failed.
 ![a](plots/resnet-20__2016-08-14_00-25-56plain_orth20__2016-08-14_15-34-29.png)
-however plain-110 failed:
-![b](plots/resnet-20__2016-08-14_00-25-56plain_orth20__2016-08-14_15-34-29.png)
+![b](plots/resnet-110__2016-08-15_10-12-25plain110__2016-08-15_10-11-55.png)
