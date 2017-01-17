@@ -1,4 +1,4 @@
-name: "resnet3-cifar10"
+name: "resnet5-cifar10"
 layer {
   name: "data"
   type: "Data"
@@ -414,9 +414,225 @@ layer {
   }
 }
 layer {
-  name: "group1_block0_conv0"
+  name: "group0_block3_conv0"
   type: "Convolution"
   bottom: "group0_block2_sum"
+  top: "group0_block3_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 16
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group0_block3_conv0_bn"
+  type: "BatchNorm"
+  bottom: "group0_block3_conv0"
+  top: "group0_block3_conv0"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group0_block3_conv0_scale"
+  type: "Scale"
+  bottom: "group0_block3_conv0"
+  top: "group0_block3_conv0"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group0_block3_conv0_relu"
+  type: "ReLU"
+  bottom: "group0_block3_conv0"
+  top: "group0_block3_conv0"
+}
+layer {
+  name: "group0_block3_conv1"
+  type: "Convolution"
+  bottom: "group0_block3_conv0"
+  top: "group0_block3_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 16
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group0_block3_conv1_bn"
+  type: "BatchNorm"
+  bottom: "group0_block3_conv1"
+  top: "group0_block3_conv1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group0_block3_conv1_scale"
+  type: "Scale"
+  bottom: "group0_block3_conv1"
+  top: "group0_block3_conv1"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group0_block3_sum"
+  type: "Eltwise"
+  bottom: "group0_block3_conv1"
+  bottom: "group0_block2_sum"
+  top: "group0_block3_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "group0_block4_conv0"
+  type: "Convolution"
+  bottom: "group0_block3_sum"
+  top: "group0_block4_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 16
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group0_block4_conv0_bn"
+  type: "BatchNorm"
+  bottom: "group0_block4_conv0"
+  top: "group0_block4_conv0"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group0_block4_conv0_scale"
+  type: "Scale"
+  bottom: "group0_block4_conv0"
+  top: "group0_block4_conv0"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group0_block4_conv0_relu"
+  type: "ReLU"
+  bottom: "group0_block4_conv0"
+  top: "group0_block4_conv0"
+}
+layer {
+  name: "group0_block4_conv1"
+  type: "Convolution"
+  bottom: "group0_block4_conv0"
+  top: "group0_block4_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 16
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group0_block4_conv1_bn"
+  type: "BatchNorm"
+  bottom: "group0_block4_conv1"
+  top: "group0_block4_conv1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group0_block4_conv1_scale"
+  type: "Scale"
+  bottom: "group0_block4_conv1"
+  top: "group0_block4_conv1"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group0_block4_sum"
+  type: "Eltwise"
+  bottom: "group0_block4_conv1"
+  bottom: "group0_block3_sum"
+  top: "group0_block4_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "group1_block0_conv0"
+  type: "Convolution"
+  bottom: "group0_block4_sum"
   top: "group1_block0_conv0"
   param {
     lr_mult: 1
@@ -514,7 +730,7 @@ layer {
 layer {
   name: "group1_block0_proj"
   type: "Convolution"
-  bottom: "group0_block2_sum"
+  bottom: "group0_block4_sum"
   top: "group1_block0_proj"
   param {
     lr_mult: 1
@@ -784,9 +1000,225 @@ layer {
   }
 }
 layer {
-  name: "group2_block0_conv0"
+  name: "group1_block3_conv0"
   type: "Convolution"
   bottom: "group1_block2_sum"
+  top: "group1_block3_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group1_block3_conv0_bn"
+  type: "BatchNorm"
+  bottom: "group1_block3_conv0"
+  top: "group1_block3_conv0"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group1_block3_conv0_scale"
+  type: "Scale"
+  bottom: "group1_block3_conv0"
+  top: "group1_block3_conv0"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group1_block3_conv0_relu"
+  type: "ReLU"
+  bottom: "group1_block3_conv0"
+  top: "group1_block3_conv0"
+}
+layer {
+  name: "group1_block3_conv1"
+  type: "Convolution"
+  bottom: "group1_block3_conv0"
+  top: "group1_block3_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group1_block3_conv1_bn"
+  type: "BatchNorm"
+  bottom: "group1_block3_conv1"
+  top: "group1_block3_conv1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group1_block3_conv1_scale"
+  type: "Scale"
+  bottom: "group1_block3_conv1"
+  top: "group1_block3_conv1"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group1_block3_sum"
+  type: "Eltwise"
+  bottom: "group1_block3_conv1"
+  bottom: "group1_block2_sum"
+  top: "group1_block3_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "group1_block4_conv0"
+  type: "Convolution"
+  bottom: "group1_block3_sum"
+  top: "group1_block4_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group1_block4_conv0_bn"
+  type: "BatchNorm"
+  bottom: "group1_block4_conv0"
+  top: "group1_block4_conv0"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group1_block4_conv0_scale"
+  type: "Scale"
+  bottom: "group1_block4_conv0"
+  top: "group1_block4_conv0"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group1_block4_conv0_relu"
+  type: "ReLU"
+  bottom: "group1_block4_conv0"
+  top: "group1_block4_conv0"
+}
+layer {
+  name: "group1_block4_conv1"
+  type: "Convolution"
+  bottom: "group1_block4_conv0"
+  top: "group1_block4_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group1_block4_conv1_bn"
+  type: "BatchNorm"
+  bottom: "group1_block4_conv1"
+  top: "group1_block4_conv1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group1_block4_conv1_scale"
+  type: "Scale"
+  bottom: "group1_block4_conv1"
+  top: "group1_block4_conv1"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group1_block4_sum"
+  type: "Eltwise"
+  bottom: "group1_block4_conv1"
+  bottom: "group1_block3_sum"
+  top: "group1_block4_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "group2_block0_conv0"
+  type: "Convolution"
+  bottom: "group1_block4_sum"
   top: "group2_block0_conv0"
   param {
     lr_mult: 1
@@ -884,7 +1316,7 @@ layer {
 layer {
   name: "group2_block0_proj"
   type: "Convolution"
-  bottom: "group1_block2_sum"
+  bottom: "group1_block4_sum"
   top: "group2_block0_proj"
   param {
     lr_mult: 1
@@ -1154,9 +1586,225 @@ layer {
   }
 }
 layer {
+  name: "group2_block3_conv0"
+  type: "Convolution"
+  bottom: "group2_block2_sum"
+  top: "group2_block3_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group2_block3_conv0_bn"
+  type: "BatchNorm"
+  bottom: "group2_block3_conv0"
+  top: "group2_block3_conv0"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group2_block3_conv0_scale"
+  type: "Scale"
+  bottom: "group2_block3_conv0"
+  top: "group2_block3_conv0"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group2_block3_conv0_relu"
+  type: "ReLU"
+  bottom: "group2_block3_conv0"
+  top: "group2_block3_conv0"
+}
+layer {
+  name: "group2_block3_conv1"
+  type: "Convolution"
+  bottom: "group2_block3_conv0"
+  top: "group2_block3_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group2_block3_conv1_bn"
+  type: "BatchNorm"
+  bottom: "group2_block3_conv1"
+  top: "group2_block3_conv1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group2_block3_conv1_scale"
+  type: "Scale"
+  bottom: "group2_block3_conv1"
+  top: "group2_block3_conv1"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group2_block3_sum"
+  type: "Eltwise"
+  bottom: "group2_block3_conv1"
+  bottom: "group2_block2_sum"
+  top: "group2_block3_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "group2_block4_conv0"
+  type: "Convolution"
+  bottom: "group2_block3_sum"
+  top: "group2_block4_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group2_block4_conv0_bn"
+  type: "BatchNorm"
+  bottom: "group2_block4_conv0"
+  top: "group2_block4_conv0"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group2_block4_conv0_scale"
+  type: "Scale"
+  bottom: "group2_block4_conv0"
+  top: "group2_block4_conv0"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group2_block4_conv0_relu"
+  type: "ReLU"
+  bottom: "group2_block4_conv0"
+  top: "group2_block4_conv0"
+}
+layer {
+  name: "group2_block4_conv1"
+  type: "Convolution"
+  bottom: "group2_block4_conv0"
+  top: "group2_block4_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "group2_block4_conv1_bn"
+  type: "BatchNorm"
+  bottom: "group2_block4_conv1"
+  top: "group2_block4_conv1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+}
+layer {
+  name: "group2_block4_conv1_scale"
+  type: "Scale"
+  bottom: "group2_block4_conv1"
+  top: "group2_block4_conv1"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "group2_block4_sum"
+  type: "Eltwise"
+  bottom: "group2_block4_conv1"
+  bottom: "group2_block3_sum"
+  top: "group2_block4_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
   name: "global_avg_pool"
   type: "Pooling"
-  bottom: "group2_block2_sum"
+  bottom: "group2_block4_sum"
   top: "global_avg_pool"
   pooling_param {
     pool: AVE

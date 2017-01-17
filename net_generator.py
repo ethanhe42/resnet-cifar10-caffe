@@ -1,5 +1,7 @@
+from __future__ import print_function
 from caffe.proto import caffe_pb2
 import os.path as osp
+import sys
 import os
 # import caffe
 
@@ -70,12 +72,12 @@ class Solver:
         self.p.net = osp.join(self.folder, "trainval.prototxt")
 
     def write(self):
-        # dirname = osp.dirname(name)
-        # if not osp.exists(dirname):
-        #     os.mkdir(dirname)
+        dirname = osp.dirname(self.name)
+        if not osp.exists(dirname):
+            os.mkdir(dirname)
         if not osp.exists(self.p.snapshot_prefix):
             os.mkdir(self.p.snapshot_prefix)
-        with open(self.name, 'wb') as f:
+        with open(self.name, 'w') as f:
             f.write(str(self.p))
 
 class Net:
@@ -130,11 +132,11 @@ class Net:
             if ext == '':
                 ext = '.prototxt'
                 name = filepath+ext
-        with open(name, 'wb') as f:
+        with open(name, 'w') as f:
             f.write(str(self.net))
 
     def show(self):
-        print self.net
+        print(self.net)
     #************************** params **************************
 
     def param(self, lr_mult=1, decay_mult=0):
@@ -203,8 +205,8 @@ class Net:
         self.param(lr_mult=0, decay_mult=0)
         self.param(lr_mult=0, decay_mult=0)
         batch_norm_param = self.this.batch_norm_param
-        batch_norm_param.use_global_stats = False
-        batch_norm_param.moving_average_fraction = 0.95
+        #batch_norm_param.use_global_stats = False
+        #batch_norm_param.moving_average_fraction = 0.95
 
     def Scale(self, name=None):
         self.setup(self.suffix('scale', name), 'Scale', inplace=True)
@@ -321,7 +323,7 @@ class Net:
 
     def res_func(self, name, num_output, up=False):
         bottom = self.cur.name
-        print bottom
+        print(bottom)
         self.conv_bn_relu(name+'_conv0', num_output=num_output, stride=1+int(up))
         self.conv_bn(name+'_conv1', num_output=num_output)
         if up:
@@ -358,8 +360,8 @@ class Net:
 
 
 if __name__ == '__main__':
-    n=3
-    pt_folder = osp.join(osp.abspath(osp.curdir), "resnet-20")
+    n=18
+    pt_folder = osp.join(osp.abspath(osp.curdir), "resnet-%d" % (6*n+2))
     name = 'resnet'+str(n)+'-cifar10'
 
     solver = Solver(folder=pt_folder)

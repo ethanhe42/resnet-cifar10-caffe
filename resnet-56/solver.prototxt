@@ -1,0 +1,17 @@
+test_iter: 100
+test_interval: 1000
+base_lr: 0.1
+display: 100
+max_iter: 64000
+lr_policy: "multistep"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 10000
+snapshot_prefix: "/home/heyihui/resnet-cifar10-caffe/resnet-56/snapshot/"
+solver_mode: GPU
+net: "/home/heyihui/resnet-cifar10-caffe/resnet-56/trainval.prototxt"
+test_initialization: true
+stepvalue: 32000
+stepvalue: 48000
+type: "Nesterov"
