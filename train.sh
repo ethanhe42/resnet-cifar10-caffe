@@ -5,6 +5,7 @@ GPUs=$1
 # eg. 0,1,2,3
 NET=$2
 mkdir ${NET}/logs
+mkdir ${NET}/snapshot
 # eg. resnet-20
 EXTRA_ARGS=${array[@]:3:$len}
 EXTRA_ARGS_SLUG=${EXTRA_ARGS// /_}
