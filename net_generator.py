@@ -327,7 +327,7 @@ class Net:
         self.conv_bn_relu(name+'_conv0', num_output=num_output, stride=1+int(up))
         self.conv_bn(name+'_conv1', num_output=num_output)
         if up:
-            self.conv_bn(name+'_proj', num_output=num_output, bottom=[bottom], pad=0, kernel_size=2, stride=2)
+            self.conv_bn(name+'_proj', num_output=num_output, bottom=[bottom], pad=0, kernel_size=1, stride=2)
             self.Eltwise(name+'_sum', bottom1=name+'_conv1')
         else:
             self.Eltwise(name+'_sum', bottom1=bottom)
