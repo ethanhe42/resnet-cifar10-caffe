@@ -60,7 +60,7 @@ class Solver:
         self.p.stepvalue.extend([32000, 48000])
         self.p.gamma = 0.1
         self.p.momentum = 0.9
-        self.p.weight_decay = 0.0005
+        self.p.weight_decay = 0.0001
 
         self.p.display = 100
         self.p.max_iter = 64000
