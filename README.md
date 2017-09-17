@@ -13,6 +13,7 @@ seems there's no much difference between resnet-20 and plain-20. However, from t
 ![a](plots/resnet-20__2016-08-14_00-25-56plain_orth20__2016-08-14_15-34-29.png)
 ![b](plots/resnet-110__2016-08-15_10-12-25plain110__2016-08-15_10-11-55.png)
 
-### links
-[resnet-imagenet-caffe](https://github.com/yihui-he/resnet-imagenet-caffe)
+### Other models in Caffe
+[ResNet-ImageNet-Caffe](https://github.com/yihui-he/resnet-imagenet-caffe)  
+[Xception-Caffe](https://github.com/yihui-he/Xception-caffe)  
 
