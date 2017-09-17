@@ -5,7 +5,7 @@
   - get [cifar10 python version](https://www.cs.toronto.edu/~kriz/cifar.html)
   - use [data_utils.py](data_utils.py) to generate 4 pixel padded training data and testing data. Horizontal flip and random crop are performed on the fly while training.
 3. use [net_generator.py](net_generator.py) to generate `solver.prototxt` and `trainval.prototxt`, you can generate resnet or plain net of depth 20/32/44/56/110, or even deeper if you want. you just need to change `n` according to `depth=6n+2`  
-4. specify caffe path in [train.sh](train.sh), then train networks with `./train.sh [GPUs] [NET]` (eg., `./train.sh 0,1,2,3 resnet-20`, logs can be accessed from 'resnet-20/logs').
+4. specify caffe path in [train.sh](train.sh), then train networks with `./train.sh [GPUs] [NET]` (eg., `./train.sh 0,1,2,3 resnet-20`, logs can be accessed from `resnet-20/logs` folder).
 5. specify caffe path in [cfgs.py](cfgs.py) and use [plot.py](plot.py) to generate beautful loss plots.
 
 ### results are consistent with original paper
