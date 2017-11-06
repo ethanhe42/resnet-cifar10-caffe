@@ -1,0 +1,17 @@
+test_iter: 500
+test_interval: 1000
+base_lr: 0.1
+display: 100
+max_iter: 64000
+lr_policy: "multistep"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 0.0001
+snapshot: 10000
+snapshot_prefix: "vgg/snapshot/"
+solver_mode: GPU
+net: "vgg/trainval.prototxt"
+test_initialization: false
+stepvalue: 32000
+stepvalue: 48000
+type: "Nesterov"
