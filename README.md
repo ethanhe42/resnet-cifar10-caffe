@@ -8,6 +8,9 @@
 4. specify caffe path in [train.sh](train.sh), then train networks with `./train.sh [GPUs] [NET]` (eg., `./train.sh 0,1,2,3 resnet-20`, logs can be accessed from `resnet-20/logs` folder).
 5. specify caffe path in [cfgs.py](cfgs.py) and use [plot.py](plot.py) to generate beautful loss plots.
 
+### Download
+[ResNet-56](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-56_iter_64000.caffemodel) Accuracy 92.8%
+
 ### results are consistent with original paper
 seems there's no much difference between resnet-20 and plain-20. However, from the second plot, you can see that plain-110 have difficulty to converge.
 ![a](plots/resnet-20__2016-08-14_00-25-56plain_orth20__2016-08-14_15-34-29.png)
