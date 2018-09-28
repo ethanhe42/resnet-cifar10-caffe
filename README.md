@@ -22,7 +22,9 @@ If you find the code useful in your research, please consider citing:
     
     
 ### Download
-[ResNet-56](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-56_iter_64000.caffemodel) Accuracy 92.8%
+- [ResNet-56](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-56_iter_64000.caffemodel) Accuracy 92.8%
+- [ResNet-20](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-20_iter_60000.caffemodel)
+- [CIFAR-10 LMDB](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/cifar-10-batches-py.zip)
 
 ### results
 Results are consistent with original paper. seems there's no much difference between resnet-20 and plain-20. However, from the second plot, you can see that plain-110 have difficulty to converge.
