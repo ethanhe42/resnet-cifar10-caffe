@@ -1,9 +1,12 @@
 # ResNet 20/32/44/56/110 for CIFAR10 with caffe 
 ### Testing
+```Shell
+~/caffe/build/tools/caffe test -gpu 0 -iteartions 100 -model resnet-20/trainval.prototxt -weights resnet-20/snapshot/solver_iter_64000.caffemodel 
+```
 | Model                                                                                                    |  Acc | Claimed Acc|
 |:---------------------------------------------------------------------------------------------------------|:-----------:|:-------------:|
-| [ResNet-20](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-20_iter_60000.caffemodel) | %       | 91.25%         |
-|  [ResNet-32]()  | %       | 92.49%         |
+| [ResNet-20](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-20_iter_60000.caffemodel) | 91.4%       | 91.25%         |
+|  [ResNet-32]()  | 92.48%       | 92.49%         |
 |  [ResNet-44]()  | %       | 92.83%         |
 | [ResNet-56](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-56_iter_64000.caffemodel)  | 92.8%       | 93.03%         |
 |  [ResNet-110]()  | %       | 93.39%         |
@@ -44,6 +47,9 @@ Results are consistent with original paper. seems there's no much difference bet
 use [net_generator.py](net_generator.py) to generate `solver.prototxt` and `trainval.prototxt`, you can generate resnet or plain net of depth 20/32/44/56/110, or even deeper if you want. you just need to change `n` according to `depth=6n+2`  
 
 ### How I generate lmdb data:
+``Shell
+./create_cifar.sh
+```
 create 4 pixel padded training LMDB and testing LMDB, then create a soft link `ln -s cifar-10-batches-py` in this folder.
     - get [cifar10 python version](https://www.cs.toronto.edu/~kriz/cifar.html)
     - use [data_utils.py](data_utils.py) to generate 4 pixel padded training data and testing data. Horizontal flip and random crop are performed on the fly while training.
