@@ -33,7 +33,7 @@ layer {
   }
   data_param {
     source: "cifar-10-batches-py/test"
-    batch_size: 128
+    batch_size: 100
     backend: LMDB
   }
 }
@@ -198,6 +198,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block0_relu"
+  type: "ReLU"
+  bottom: "group0_block0_sum"
+  top: "group0_block0_sum"
+}
+layer {
   name: "group0_block1_conv0"
   type: "Convolution"
   bottom: "group0_block0_sum"
@@ -304,6 +310,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block1_relu"
+  type: "ReLU"
+  bottom: "group0_block1_sum"
+  top: "group0_block1_sum"
 }
 layer {
   name: "group0_block2_conv0"
@@ -414,6 +426,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block2_relu"
+  type: "ReLU"
+  bottom: "group0_block2_sum"
+  top: "group0_block2_sum"
+}
+layer {
   name: "group0_block3_conv0"
   type: "Convolution"
   bottom: "group0_block2_sum"
@@ -520,6 +538,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block3_relu"
+  type: "ReLU"
+  bottom: "group0_block3_sum"
+  top: "group0_block3_sum"
 }
 layer {
   name: "group0_block4_conv0"
@@ -630,6 +654,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block4_relu"
+  type: "ReLU"
+  bottom: "group0_block4_sum"
+  top: "group0_block4_sum"
+}
+layer {
   name: "group0_block5_conv0"
   type: "Convolution"
   bottom: "group0_block4_sum"
@@ -736,6 +766,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block5_relu"
+  type: "ReLU"
+  bottom: "group0_block5_sum"
+  top: "group0_block5_sum"
 }
 layer {
   name: "group0_block6_conv0"
@@ -846,6 +882,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block6_relu"
+  type: "ReLU"
+  bottom: "group0_block6_sum"
+  top: "group0_block6_sum"
+}
+layer {
   name: "group0_block7_conv0"
   type: "Convolution"
   bottom: "group0_block6_sum"
@@ -952,6 +994,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block7_relu"
+  type: "ReLU"
+  bottom: "group0_block7_sum"
+  top: "group0_block7_sum"
 }
 layer {
   name: "group0_block8_conv0"
@@ -1062,6 +1110,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block8_relu"
+  type: "ReLU"
+  bottom: "group0_block8_sum"
+  top: "group0_block8_sum"
+}
+layer {
   name: "group0_block9_conv0"
   type: "Convolution"
   bottom: "group0_block8_sum"
@@ -1168,6 +1222,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block9_relu"
+  type: "ReLU"
+  bottom: "group0_block9_sum"
+  top: "group0_block9_sum"
 }
 layer {
   name: "group0_block10_conv0"
@@ -1278,6 +1338,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block10_relu"
+  type: "ReLU"
+  bottom: "group0_block10_sum"
+  top: "group0_block10_sum"
+}
+layer {
   name: "group0_block11_conv0"
   type: "Convolution"
   bottom: "group0_block10_sum"
@@ -1384,6 +1450,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block11_relu"
+  type: "ReLU"
+  bottom: "group0_block11_sum"
+  top: "group0_block11_sum"
 }
 layer {
   name: "group0_block12_conv0"
@@ -1494,6 +1566,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block12_relu"
+  type: "ReLU"
+  bottom: "group0_block12_sum"
+  top: "group0_block12_sum"
+}
+layer {
   name: "group0_block13_conv0"
   type: "Convolution"
   bottom: "group0_block12_sum"
@@ -1600,6 +1678,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block13_relu"
+  type: "ReLU"
+  bottom: "group0_block13_sum"
+  top: "group0_block13_sum"
 }
 layer {
   name: "group0_block14_conv0"
@@ -1710,6 +1794,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block14_relu"
+  type: "ReLU"
+  bottom: "group0_block14_sum"
+  top: "group0_block14_sum"
+}
+layer {
   name: "group0_block15_conv0"
   type: "Convolution"
   bottom: "group0_block14_sum"
@@ -1816,6 +1906,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block15_relu"
+  type: "ReLU"
+  bottom: "group0_block15_sum"
+  top: "group0_block15_sum"
 }
 layer {
   name: "group0_block16_conv0"
@@ -1926,6 +2022,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block16_relu"
+  type: "ReLU"
+  bottom: "group0_block16_sum"
+  top: "group0_block16_sum"
+}
+layer {
   name: "group0_block17_conv0"
   type: "Convolution"
   bottom: "group0_block16_sum"
@@ -2032,6 +2134,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block17_relu"
+  type: "ReLU"
+  bottom: "group0_block17_sum"
+  top: "group0_block17_sum"
 }
 layer {
   name: "group1_block0_conv0"
@@ -2143,7 +2251,7 @@ layer {
   convolution_param {
     num_output: 32
     pad: 0
-    kernel_size: 2
+    kernel_size: 1
     stride: 2
     weight_filler {
       type: "msra"
@@ -2186,6 +2294,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block0_relu"
+  type: "ReLU"
+  bottom: "group1_block0_sum"
+  top: "group1_block0_sum"
 }
 layer {
   name: "group1_block1_conv0"
@@ -2296,6 +2410,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block1_relu"
+  type: "ReLU"
+  bottom: "group1_block1_sum"
+  top: "group1_block1_sum"
+}
+layer {
   name: "group1_block2_conv0"
   type: "Convolution"
   bottom: "group1_block1_sum"
@@ -2402,6 +2522,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block2_relu"
+  type: "ReLU"
+  bottom: "group1_block2_sum"
+  top: "group1_block2_sum"
 }
 layer {
   name: "group1_block3_conv0"
@@ -2512,6 +2638,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block3_relu"
+  type: "ReLU"
+  bottom: "group1_block3_sum"
+  top: "group1_block3_sum"
+}
+layer {
   name: "group1_block4_conv0"
   type: "Convolution"
   bottom: "group1_block3_sum"
@@ -2618,6 +2750,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block4_relu"
+  type: "ReLU"
+  bottom: "group1_block4_sum"
+  top: "group1_block4_sum"
 }
 layer {
   name: "group1_block5_conv0"
@@ -2728,6 +2866,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block5_relu"
+  type: "ReLU"
+  bottom: "group1_block5_sum"
+  top: "group1_block5_sum"
+}
+layer {
   name: "group1_block6_conv0"
   type: "Convolution"
   bottom: "group1_block5_sum"
@@ -2834,6 +2978,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block6_relu"
+  type: "ReLU"
+  bottom: "group1_block6_sum"
+  top: "group1_block6_sum"
 }
 layer {
   name: "group1_block7_conv0"
@@ -2944,6 +3094,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block7_relu"
+  type: "ReLU"
+  bottom: "group1_block7_sum"
+  top: "group1_block7_sum"
+}
+layer {
   name: "group1_block8_conv0"
   type: "Convolution"
   bottom: "group1_block7_sum"
@@ -3050,6 +3206,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block8_relu"
+  type: "ReLU"
+  bottom: "group1_block8_sum"
+  top: "group1_block8_sum"
 }
 layer {
   name: "group1_block9_conv0"
@@ -3160,6 +3322,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block9_relu"
+  type: "ReLU"
+  bottom: "group1_block9_sum"
+  top: "group1_block9_sum"
+}
+layer {
   name: "group1_block10_conv0"
   type: "Convolution"
   bottom: "group1_block9_sum"
@@ -3266,6 +3434,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block10_relu"
+  type: "ReLU"
+  bottom: "group1_block10_sum"
+  top: "group1_block10_sum"
 }
 layer {
   name: "group1_block11_conv0"
@@ -3376,6 +3550,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block11_relu"
+  type: "ReLU"
+  bottom: "group1_block11_sum"
+  top: "group1_block11_sum"
+}
+layer {
   name: "group1_block12_conv0"
   type: "Convolution"
   bottom: "group1_block11_sum"
@@ -3482,6 +3662,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block12_relu"
+  type: "ReLU"
+  bottom: "group1_block12_sum"
+  top: "group1_block12_sum"
 }
 layer {
   name: "group1_block13_conv0"
@@ -3592,6 +3778,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block13_relu"
+  type: "ReLU"
+  bottom: "group1_block13_sum"
+  top: "group1_block13_sum"
+}
+layer {
   name: "group1_block14_conv0"
   type: "Convolution"
   bottom: "group1_block13_sum"
@@ -3698,6 +3890,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block14_relu"
+  type: "ReLU"
+  bottom: "group1_block14_sum"
+  top: "group1_block14_sum"
 }
 layer {
   name: "group1_block15_conv0"
@@ -3808,6 +4006,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block15_relu"
+  type: "ReLU"
+  bottom: "group1_block15_sum"
+  top: "group1_block15_sum"
+}
+layer {
   name: "group1_block16_conv0"
   type: "Convolution"
   bottom: "group1_block15_sum"
@@ -3916,6 +4120,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block16_relu"
+  type: "ReLU"
+  bottom: "group1_block16_sum"
+  top: "group1_block16_sum"
+}
+layer {
   name: "group1_block17_conv0"
   type: "Convolution"
   bottom: "group1_block16_sum"
@@ -4022,6 +4232,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block17_relu"
+  type: "ReLU"
+  bottom: "group1_block17_sum"
+  top: "group1_block17_sum"
 }
 layer {
   name: "group2_block0_conv0"
@@ -4133,7 +4349,7 @@ layer {
   convolution_param {
     num_output: 64
     pad: 0
-    kernel_size: 2
+    kernel_size: 1
     stride: 2
     weight_filler {
       type: "msra"
@@ -4176,6 +4392,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block0_relu"
+  type: "ReLU"
+  bottom: "group2_block0_sum"
+  top: "group2_block0_sum"
 }
 layer {
   name: "group2_block1_conv0"
@@ -4286,6 +4508,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block1_relu"
+  type: "ReLU"
+  bottom: "group2_block1_sum"
+  top: "group2_block1_sum"
+}
+layer {
   name: "group2_block2_conv0"
   type: "Convolution"
   bottom: "group2_block1_sum"
@@ -4392,6 +4620,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block2_relu"
+  type: "ReLU"
+  bottom: "group2_block2_sum"
+  top: "group2_block2_sum"
 }
 layer {
   name: "group2_block3_conv0"
@@ -4502,6 +4736,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block3_relu"
+  type: "ReLU"
+  bottom: "group2_block3_sum"
+  top: "group2_block3_sum"
+}
+layer {
   name: "group2_block4_conv0"
   type: "Convolution"
   bottom: "group2_block3_sum"
@@ -4608,6 +4848,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block4_relu"
+  type: "ReLU"
+  bottom: "group2_block4_sum"
+  top: "group2_block4_sum"
 }
 layer {
   name: "group2_block5_conv0"
@@ -4718,6 +4964,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block5_relu"
+  type: "ReLU"
+  bottom: "group2_block5_sum"
+  top: "group2_block5_sum"
+}
+layer {
   name: "group2_block6_conv0"
   type: "Convolution"
   bottom: "group2_block5_sum"
@@ -4824,6 +5076,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block6_relu"
+  type: "ReLU"
+  bottom: "group2_block6_sum"
+  top: "group2_block6_sum"
 }
 layer {
   name: "group2_block7_conv0"
@@ -4934,6 +5192,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block7_relu"
+  type: "ReLU"
+  bottom: "group2_block7_sum"
+  top: "group2_block7_sum"
+}
+layer {
   name: "group2_block8_conv0"
   type: "Convolution"
   bottom: "group2_block7_sum"
@@ -5040,6 +5304,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block8_relu"
+  type: "ReLU"
+  bottom: "group2_block8_sum"
+  top: "group2_block8_sum"
 }
 layer {
   name: "group2_block9_conv0"
@@ -5150,6 +5420,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block9_relu"
+  type: "ReLU"
+  bottom: "group2_block9_sum"
+  top: "group2_block9_sum"
+}
+layer {
   name: "group2_block10_conv0"
   type: "Convolution"
   bottom: "group2_block9_sum"
@@ -5256,6 +5532,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block10_relu"
+  type: "ReLU"
+  bottom: "group2_block10_sum"
+  top: "group2_block10_sum"
 }
 layer {
   name: "group2_block11_conv0"
@@ -5366,6 +5648,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block11_relu"
+  type: "ReLU"
+  bottom: "group2_block11_sum"
+  top: "group2_block11_sum"
+}
+layer {
   name: "group2_block12_conv0"
   type: "Convolution"
   bottom: "group2_block11_sum"
@@ -5472,6 +5760,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block12_relu"
+  type: "ReLU"
+  bottom: "group2_block12_sum"
+  top: "group2_block12_sum"
 }
 layer {
   name: "group2_block13_conv0"
@@ -5582,6 +5876,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block13_relu"
+  type: "ReLU"
+  bottom: "group2_block13_sum"
+  top: "group2_block13_sum"
+}
+layer {
   name: "group2_block14_conv0"
   type: "Convolution"
   bottom: "group2_block13_sum"
@@ -5688,6 +5988,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block14_relu"
+  type: "ReLU"
+  bottom: "group2_block14_sum"
+  top: "group2_block14_sum"
 }
 layer {
   name: "group2_block15_conv0"
@@ -5798,6 +6104,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block15_relu"
+  type: "ReLU"
+  bottom: "group2_block15_sum"
+  top: "group2_block15_sum"
+}
+layer {
   name: "group2_block16_conv0"
   type: "Convolution"
   bottom: "group2_block15_sum"
@@ -5906,6 +6218,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block16_relu"
+  type: "ReLU"
+  bottom: "group2_block16_sum"
+  top: "group2_block16_sum"
+}
+layer {
   name: "group2_block17_conv0"
   type: "Convolution"
   bottom: "group2_block16_sum"
@@ -6012,6 +6330,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block17_relu"
+  type: "ReLU"
+  bottom: "group2_block17_sum"
+  top: "group2_block17_sum"
 }
 layer {
   name: "global_avg_pool"

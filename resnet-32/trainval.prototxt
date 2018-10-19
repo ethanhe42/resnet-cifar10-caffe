@@ -33,7 +33,7 @@ layer {
   }
   data_param {
     source: "cifar-10-batches-py/test"
-    batch_size: 128
+    batch_size: 100
     backend: LMDB
   }
 }
@@ -198,6 +198,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block0_relu"
+  type: "ReLU"
+  bottom: "group0_block0_sum"
+  top: "group0_block0_sum"
+}
+layer {
   name: "group0_block1_conv0"
   type: "Convolution"
   bottom: "group0_block0_sum"
@@ -304,6 +310,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block1_relu"
+  type: "ReLU"
+  bottom: "group0_block1_sum"
+  top: "group0_block1_sum"
 }
 layer {
   name: "group0_block2_conv0"
@@ -414,6 +426,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block2_relu"
+  type: "ReLU"
+  bottom: "group0_block2_sum"
+  top: "group0_block2_sum"
+}
+layer {
   name: "group0_block3_conv0"
   type: "Convolution"
   bottom: "group0_block2_sum"
@@ -522,6 +540,12 @@ layer {
   }
 }
 layer {
+  name: "group0_block3_relu"
+  type: "ReLU"
+  bottom: "group0_block3_sum"
+  top: "group0_block3_sum"
+}
+layer {
   name: "group0_block4_conv0"
   type: "Convolution"
   bottom: "group0_block3_sum"
@@ -628,6 +652,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group0_block4_relu"
+  type: "ReLU"
+  bottom: "group0_block4_sum"
+  top: "group0_block4_sum"
 }
 layer {
   name: "group1_block0_conv0"
@@ -739,7 +769,7 @@ layer {
   convolution_param {
     num_output: 32
     pad: 0
-    kernel_size: 2
+    kernel_size: 1
     stride: 2
     weight_filler {
       type: "msra"
@@ -782,6 +812,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block0_relu"
+  type: "ReLU"
+  bottom: "group1_block0_sum"
+  top: "group1_block0_sum"
 }
 layer {
   name: "group1_block1_conv0"
@@ -892,6 +928,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block1_relu"
+  type: "ReLU"
+  bottom: "group1_block1_sum"
+  top: "group1_block1_sum"
+}
+layer {
   name: "group1_block2_conv0"
   type: "Convolution"
   bottom: "group1_block1_sum"
@@ -998,6 +1040,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block2_relu"
+  type: "ReLU"
+  bottom: "group1_block2_sum"
+  top: "group1_block2_sum"
 }
 layer {
   name: "group1_block3_conv0"
@@ -1108,6 +1156,12 @@ layer {
   }
 }
 layer {
+  name: "group1_block3_relu"
+  type: "ReLU"
+  bottom: "group1_block3_sum"
+  top: "group1_block3_sum"
+}
+layer {
   name: "group1_block4_conv0"
   type: "Convolution"
   bottom: "group1_block3_sum"
@@ -1214,6 +1268,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group1_block4_relu"
+  type: "ReLU"
+  bottom: "group1_block4_sum"
+  top: "group1_block4_sum"
 }
 layer {
   name: "group2_block0_conv0"
@@ -1325,7 +1385,7 @@ layer {
   convolution_param {
     num_output: 64
     pad: 0
-    kernel_size: 2
+    kernel_size: 1
     stride: 2
     weight_filler {
       type: "msra"
@@ -1368,6 +1428,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block0_relu"
+  type: "ReLU"
+  bottom: "group2_block0_sum"
+  top: "group2_block0_sum"
 }
 layer {
   name: "group2_block1_conv0"
@@ -1478,6 +1544,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block1_relu"
+  type: "ReLU"
+  bottom: "group2_block1_sum"
+  top: "group2_block1_sum"
+}
+layer {
   name: "group2_block2_conv0"
   type: "Convolution"
   bottom: "group2_block1_sum"
@@ -1584,6 +1656,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block2_relu"
+  type: "ReLU"
+  bottom: "group2_block2_sum"
+  top: "group2_block2_sum"
 }
 layer {
   name: "group2_block3_conv0"
@@ -1694,6 +1772,12 @@ layer {
   }
 }
 layer {
+  name: "group2_block3_relu"
+  type: "ReLU"
+  bottom: "group2_block3_sum"
+  top: "group2_block3_sum"
+}
+layer {
   name: "group2_block4_conv0"
   type: "Convolution"
   bottom: "group2_block3_sum"
@@ -1800,6 +1884,12 @@ layer {
   eltwise_param {
     operation: SUM
   }
+}
+layer {
+  name: "group2_block4_relu"
+  type: "ReLU"
+  bottom: "group2_block4_sum"
+  top: "group2_block4_sum"
 }
 layer {
   name: "global_avg_pool"

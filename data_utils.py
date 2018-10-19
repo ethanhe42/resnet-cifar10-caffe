@@ -34,6 +34,11 @@ def load_CIFAR10(ROOT):
     ys.append(Y)    
   Xtr = np.concatenate(xs)
   Ytr = np.concatenate(ys)
+  idx = np.arange(len(Ytr))
+  randidx = np.random.shuffle(idx)
+  print 'shuffle training data', len(idx)
+  Xtr[idx] = Xtr[randidx]
+  Ytr[idx] = Ytr[randidx]
   del X, Y
   Xte, Yte = load_CIFAR_batch(os.path.join(ROOT, 'test_batch'), pad=False)
   print Xtr.shape
@@ -47,7 +52,7 @@ def py2lmdb(X, y, save_path):
 
   assert X.dtype == np.uint8
   N = X.shape[0]
-  assert N == y.shape[0]
+  assert N == y.shape[0], str(N) + ' ' + str(y.shape)
   
   
   # We need to prepare the database for the size. We'll set it 10 times
