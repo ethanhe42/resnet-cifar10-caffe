@@ -214,12 +214,13 @@ class Net:
 
     #************************** layers **************************
 
-    def Data(self, source, top=['data', 'label'], name="data", phase=None, **kwargs):
+    def Data(self, source, top=['data', 'label'], name="data", phase=None,
+            batch_size=128, **kwargs):
         self.setup(name, 'Data', top=top)
 
         self.include(phase)
 
-        self.data_param(source)
+        self.data_param(source, batch_size=batch_size)
         self.transform_param(phase=phase, **kwargs)
         
     def Convolution(self, name, bottom=[], num_output=None, kernel_size=3, pad=1, stride=1, decay = True, bias = False, freeze = False):
@@ -331,6 +332,7 @@ class Net:
             self.Eltwise(name+'_sum', bottom1=name+'_conv1')
         else:
             self.Eltwise(name+'_sum', bottom1=bottom)
+        self.ReLU(name+'_relu')
     
     def res_group(self, group_id, n, num_output):
         def name(block_id):
@@ -361,7 +363,8 @@ class Net:
 
 if __name__ == '__main__':
     n=18
-    pt_folder = osp.join(osp.abspath(osp.curdir), "resnet-%d" % (6*n+2))
+    #pt_folder = osp.join(osp.abspath(osp.curdir), "resnet-%d" % (6*n+2))
+    pt_folder = "resnet-%d" % (6*n+2)
     name = 'resnet'+str(n)+'-cifar10'
 
     solver = Solver(folder=pt_folder)
@@ -369,7 +372,7 @@ if __name__ == '__main__':
 
     builder = Net(name)
     builder.Data('cifar-10-batches-py/train', phase='TRAIN', crop_size=32)
-    builder.Data('cifar-10-batches-py/test', phase='TEST')
+    builder.Data('cifar-10-batches-py/test', phase='TEST', batch_size=100)
     builder.resnet_cifar(n)
     builder.write(folder=pt_folder)
 
