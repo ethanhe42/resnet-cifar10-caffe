@@ -362,7 +362,8 @@ class Net:
 
 
 if __name__ == '__main__':
-    n=18
+    #3, 5, 7, 9 18
+    n=3
     #pt_folder = osp.join(osp.abspath(osp.curdir), "resnet-%d" % (6*n+2))
     pt_folder = "resnet-%d" % (6*n+2)
     name = 'resnet'+str(n)+'-cifar10'
