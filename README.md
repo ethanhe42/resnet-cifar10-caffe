@@ -1,7 +1,7 @@
 # ResNet 20/32/44/56/110 for CIFAR10 with caffe 
 ### Training
 1. create 4 pixel padded training LMDB and testing LMDB, then create a soft link `ln -s cifar-10-batches-py` in this folder.
-    - directly download it [here](https://github.com/yihui-he/resnet-cifar10-caffe/releases/tag/1.0).
+    - directly download with `./download_cifar.sh`
     - or you can generate it as follow:
       - get [cifar10 python version](https://www.cs.toronto.edu/~kriz/cifar.html)
       - use [data_utils.py](data_utils.py) to generate 4 pixel padded training data and testing data. Horizontal flip and random crop are performed on the fly while training.
