@@ -33,7 +33,7 @@ layer {
   }
   data_param {
     source: "cifar-10-batches-py/test"
-    batch_size: 128
+    batch_size: 100
     backend: LMDB
   }
 }
