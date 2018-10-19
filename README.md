@@ -2,11 +2,11 @@
 ### Testing
 | Model                                                                                                    |  Acc | Claimed Acc|
 |:---------------------------------------------------------------------------------------------------------|:-----------:|:-------------:|
-| [ResNet-20](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-20_iter_60000.caffemodel) | 40.8%       | 42.3%         |
-|  [ResNet-32]()  | %       | %         |
-|  [ResNet-44]()  | %       | %         |
+| [ResNet-20](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-20_iter_60000.caffemodel) | %       | 91.25%         |
+|  [ResNet-32]()  | %       | 92.49%         |
+|  [ResNet-44]()  | %       | 92.83%         |
 | [ResNet-56](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet-56_iter_64000.caffemodel)  | 92.8%       | 93.03%         |
-|  [ResNet-110]()  | %       | %         |
+|  [ResNet-110]()  | %       | 93.39%         |
 
 ### Citation
 If you find the code useful in your research, please consider citing:
