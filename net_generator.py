@@ -62,7 +62,7 @@ class Solver:
         self.p.momentum = 0.9
         self.p.weight_decay = 0.0001
 
-        self.p.display = 100
+        self.p.display = 1000
         self.p.max_iter = 64000
         self.p.snapshot = 10000
         self.p.snapshot_prefix = osp.join(self.folder, "snapshot/")
