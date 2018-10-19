@@ -47,12 +47,13 @@ Results are consistent with original paper. seems there's no much difference bet
 use [net_generator.py](net_generator.py) to generate `solver.prototxt` and `trainval.prototxt`, you can generate resnet or plain net of depth 20/32/44/56/110, or even deeper if you want. you just need to change `n` according to `depth=6n+2`  
 
 ### How I generate lmdb data:
-``Shell
+```Shell
 ./create_cifar.sh
 ```
+
 create 4 pixel padded training LMDB and testing LMDB, then create a soft link `ln -s cifar-10-batches-py` in this folder.
-    - get [cifar10 python version](https://www.cs.toronto.edu/~kriz/cifar.html)
-    - use [data_utils.py](data_utils.py) to generate 4 pixel padded training data and testing data. Horizontal flip and random crop are performed on the fly while training.
+- get [cifar10 python version](https://www.cs.toronto.edu/~kriz/cifar.html)
+- use [data_utils.py](data_utils.py) to generate 4 pixel padded training data and testing data. Horizontal flip and random crop are performed on the fly while training.
 
 ### Other models in Caffe
 [ResNet-ImageNet-Caffe](https://github.com/yihui-he/resnet-imagenet-caffe)  
