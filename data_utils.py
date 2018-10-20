@@ -35,10 +35,11 @@ def load_CIFAR10(ROOT):
   Xtr = np.concatenate(xs)
   Ytr = np.concatenate(ys)
   idx = np.arange(len(Ytr))
-  randidx = np.random.shuffle(idx)
+  np.random.shuffle(idx)
   print 'shuffle training data', len(idx)
-  Xtr[idx] = Xtr[randidx]
-  Ytr[idx] = Ytr[randidx]
+  Xtr = Xtr[idx]
+  Ytr = Ytr[idx]
+  print idx
   del X, Y
   Xte, Yte = load_CIFAR_batch(os.path.join(ROOT, 'test_batch'), pad=False)
   print Xtr.shape
