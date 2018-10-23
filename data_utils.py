@@ -40,8 +40,10 @@ def load_CIFAR10(ROOT):
   Xtr = Xtr[idx]
   Ytr = Ytr[idx]
   print idx
+  print 'tr label',Ytr.min(), Ytr.max()
   del X, Y
   Xte, Yte = load_CIFAR_batch(os.path.join(ROOT, 'test_batch'), pad=False)
+  print 'te label',Yte.min(), Yte.max()
   print Xtr.shape
   print Ytr.shape
   print Xte.shape
