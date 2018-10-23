@@ -1,7 +1,7 @@
 test_iter: 100
 test_interval: 1000
 base_lr: 0.1
-display: 100
+display: 1000
 max_iter: 64000
 lr_policy: "multistep"
 gamma: 0.1
@@ -14,4 +14,4 @@ net: "resnet-56/trainval.prototxt"
 test_initialization: true
 stepvalue: 32000
 stepvalue: 48000
-type: "Nesterov"
+type: "SGD"
