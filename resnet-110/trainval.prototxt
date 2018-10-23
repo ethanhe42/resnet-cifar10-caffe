@@ -8,7 +8,6 @@ layer {
     phase: TRAIN
   }
   transform_param {
-    scale: 0.0078125
     mirror: true
     crop_size: 32
     mean_value: 128
@@ -28,7 +27,6 @@ layer {
     phase: TEST
   }
   transform_param {
-    scale: 0.0078125
     mean_value: 128
   }
   data_param {
@@ -46,6 +44,10 @@ layer {
     lr_mult: 1
     decay_mult: 1
   }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   convolution_param {
     num_output: 16
     pad: 1
@@ -53,6 +55,10 @@ layer {
     stride: 1
     weight_filler {
       type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
     }
   }
 }
@@ -73,12 +79,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "first_conv_scale"
   type: "Scale"
   bottom: "first_conv"
   top: "first_conv"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -100,6 +117,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -125,12 +143,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block0_conv0_scale"
   type: "Scale"
   bottom: "group0_block0_conv0"
   top: "group0_block0_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -152,6 +181,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -177,12 +207,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block0_conv1_scale"
   type: "Scale"
   bottom: "group0_block0_conv1"
   top: "group0_block0_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -214,6 +255,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -239,12 +281,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block1_conv0_scale"
   type: "Scale"
   bottom: "group0_block1_conv0"
   top: "group0_block1_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -266,6 +319,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -291,12 +345,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block1_conv1_scale"
   type: "Scale"
   bottom: "group0_block1_conv1"
   top: "group0_block1_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -328,6 +393,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -353,12 +419,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block2_conv0_scale"
   type: "Scale"
   bottom: "group0_block2_conv0"
   top: "group0_block2_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -380,6 +457,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -405,12 +483,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block2_conv1_scale"
   type: "Scale"
   bottom: "group0_block2_conv1"
   top: "group0_block2_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -442,6 +531,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -467,12 +557,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block3_conv0_scale"
   type: "Scale"
   bottom: "group0_block3_conv0"
   top: "group0_block3_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -494,6 +595,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -519,12 +621,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block3_conv1_scale"
   type: "Scale"
   bottom: "group0_block3_conv1"
   top: "group0_block3_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -556,6 +669,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -581,12 +695,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block4_conv0_scale"
   type: "Scale"
   bottom: "group0_block4_conv0"
   top: "group0_block4_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -608,6 +733,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -633,12 +759,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block4_conv1_scale"
   type: "Scale"
   bottom: "group0_block4_conv1"
   top: "group0_block4_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -670,6 +807,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -695,12 +833,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block5_conv0_scale"
   type: "Scale"
   bottom: "group0_block5_conv0"
   top: "group0_block5_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -722,6 +871,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -747,12 +897,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block5_conv1_scale"
   type: "Scale"
   bottom: "group0_block5_conv1"
   top: "group0_block5_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -784,6 +945,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -809,12 +971,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block6_conv0_scale"
   type: "Scale"
   bottom: "group0_block6_conv0"
   top: "group0_block6_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -836,6 +1009,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -861,12 +1035,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block6_conv1_scale"
   type: "Scale"
   bottom: "group0_block6_conv1"
   top: "group0_block6_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -898,6 +1083,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -923,12 +1109,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block7_conv0_scale"
   type: "Scale"
   bottom: "group0_block7_conv0"
   top: "group0_block7_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -950,6 +1147,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -975,12 +1173,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block7_conv1_scale"
   type: "Scale"
   bottom: "group0_block7_conv1"
   top: "group0_block7_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1012,6 +1221,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1037,12 +1247,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block8_conv0_scale"
   type: "Scale"
   bottom: "group0_block8_conv0"
   top: "group0_block8_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1064,6 +1285,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1089,12 +1311,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block8_conv1_scale"
   type: "Scale"
   bottom: "group0_block8_conv1"
   top: "group0_block8_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1126,6 +1359,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1151,12 +1385,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block9_conv0_scale"
   type: "Scale"
   bottom: "group0_block9_conv0"
   top: "group0_block9_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1178,6 +1423,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1203,12 +1449,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block9_conv1_scale"
   type: "Scale"
   bottom: "group0_block9_conv1"
   top: "group0_block9_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1240,6 +1497,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1265,12 +1523,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block10_conv0_scale"
   type: "Scale"
   bottom: "group0_block10_conv0"
   top: "group0_block10_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1292,6 +1561,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1317,12 +1587,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block10_conv1_scale"
   type: "Scale"
   bottom: "group0_block10_conv1"
   top: "group0_block10_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1354,6 +1635,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1379,12 +1661,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block11_conv0_scale"
   type: "Scale"
   bottom: "group0_block11_conv0"
   top: "group0_block11_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1406,6 +1699,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1431,12 +1725,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block11_conv1_scale"
   type: "Scale"
   bottom: "group0_block11_conv1"
   top: "group0_block11_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1468,6 +1773,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1493,12 +1799,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block12_conv0_scale"
   type: "Scale"
   bottom: "group0_block12_conv0"
   top: "group0_block12_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1520,6 +1837,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1545,12 +1863,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block12_conv1_scale"
   type: "Scale"
   bottom: "group0_block12_conv1"
   top: "group0_block12_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1582,6 +1911,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1607,12 +1937,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block13_conv0_scale"
   type: "Scale"
   bottom: "group0_block13_conv0"
   top: "group0_block13_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1634,6 +1975,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1659,12 +2001,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block13_conv1_scale"
   type: "Scale"
   bottom: "group0_block13_conv1"
   top: "group0_block13_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1696,6 +2049,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1721,12 +2075,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block14_conv0_scale"
   type: "Scale"
   bottom: "group0_block14_conv0"
   top: "group0_block14_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1748,6 +2113,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1773,12 +2139,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block14_conv1_scale"
   type: "Scale"
   bottom: "group0_block14_conv1"
   top: "group0_block14_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1810,6 +2187,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1835,12 +2213,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block15_conv0_scale"
   type: "Scale"
   bottom: "group0_block15_conv0"
   top: "group0_block15_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1862,6 +2251,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1887,12 +2277,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block15_conv1_scale"
   type: "Scale"
   bottom: "group0_block15_conv1"
   top: "group0_block15_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1924,6 +2325,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -1949,12 +2351,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block16_conv0_scale"
   type: "Scale"
   bottom: "group0_block16_conv0"
   top: "group0_block16_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -1976,6 +2389,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2001,12 +2415,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block16_conv1_scale"
   type: "Scale"
   bottom: "group0_block16_conv1"
   top: "group0_block16_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2038,6 +2463,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2063,12 +2489,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block17_conv0_scale"
   type: "Scale"
   bottom: "group0_block17_conv0"
   top: "group0_block17_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2090,6 +2527,7 @@ layer {
   }
   convolution_param {
     num_output: 16
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2115,12 +2553,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group0_block17_conv1_scale"
   type: "Scale"
   bottom: "group0_block17_conv1"
   top: "group0_block17_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2152,6 +2601,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 2
@@ -2177,12 +2627,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block0_conv0_scale"
   type: "Scale"
   bottom: "group1_block0_conv0"
   top: "group1_block0_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2204,6 +2665,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2229,12 +2691,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block0_conv1_scale"
   type: "Scale"
   bottom: "group1_block0_conv1"
   top: "group1_block0_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2250,6 +2723,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 0
     kernel_size: 1
     stride: 2
@@ -2275,12 +2749,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block0_proj_scale"
   type: "Scale"
   bottom: "group1_block0_proj"
   top: "group1_block0_proj"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2312,6 +2797,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2337,12 +2823,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block1_conv0_scale"
   type: "Scale"
   bottom: "group1_block1_conv0"
   top: "group1_block1_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2364,6 +2861,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2389,12 +2887,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block1_conv1_scale"
   type: "Scale"
   bottom: "group1_block1_conv1"
   top: "group1_block1_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2426,6 +2935,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2451,12 +2961,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block2_conv0_scale"
   type: "Scale"
   bottom: "group1_block2_conv0"
   top: "group1_block2_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2478,6 +2999,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2503,12 +3025,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block2_conv1_scale"
   type: "Scale"
   bottom: "group1_block2_conv1"
   top: "group1_block2_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2540,6 +3073,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2565,12 +3099,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block3_conv0_scale"
   type: "Scale"
   bottom: "group1_block3_conv0"
   top: "group1_block3_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2592,6 +3137,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2617,12 +3163,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block3_conv1_scale"
   type: "Scale"
   bottom: "group1_block3_conv1"
   top: "group1_block3_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2654,6 +3211,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2679,12 +3237,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block4_conv0_scale"
   type: "Scale"
   bottom: "group1_block4_conv0"
   top: "group1_block4_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2706,6 +3275,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2731,12 +3301,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block4_conv1_scale"
   type: "Scale"
   bottom: "group1_block4_conv1"
   top: "group1_block4_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2768,6 +3349,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2793,12 +3375,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block5_conv0_scale"
   type: "Scale"
   bottom: "group1_block5_conv0"
   top: "group1_block5_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2820,6 +3413,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2845,12 +3439,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block5_conv1_scale"
   type: "Scale"
   bottom: "group1_block5_conv1"
   top: "group1_block5_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2882,6 +3487,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2907,12 +3513,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block6_conv0_scale"
   type: "Scale"
   bottom: "group1_block6_conv0"
   top: "group1_block6_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2934,6 +3551,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -2959,12 +3577,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block6_conv1_scale"
   type: "Scale"
   bottom: "group1_block6_conv1"
   top: "group1_block6_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -2996,6 +3625,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3021,12 +3651,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block7_conv0_scale"
   type: "Scale"
   bottom: "group1_block7_conv0"
   top: "group1_block7_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3048,6 +3689,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3073,12 +3715,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block7_conv1_scale"
   type: "Scale"
   bottom: "group1_block7_conv1"
   top: "group1_block7_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3110,6 +3763,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3135,12 +3789,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block8_conv0_scale"
   type: "Scale"
   bottom: "group1_block8_conv0"
   top: "group1_block8_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3162,6 +3827,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3187,12 +3853,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block8_conv1_scale"
   type: "Scale"
   bottom: "group1_block8_conv1"
   top: "group1_block8_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3224,6 +3901,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3249,12 +3927,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block9_conv0_scale"
   type: "Scale"
   bottom: "group1_block9_conv0"
   top: "group1_block9_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3276,6 +3965,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3301,12 +3991,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block9_conv1_scale"
   type: "Scale"
   bottom: "group1_block9_conv1"
   top: "group1_block9_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3338,6 +4039,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3363,12 +4065,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block10_conv0_scale"
   type: "Scale"
   bottom: "group1_block10_conv0"
   top: "group1_block10_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3390,6 +4103,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3415,12 +4129,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block10_conv1_scale"
   type: "Scale"
   bottom: "group1_block10_conv1"
   top: "group1_block10_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3452,6 +4177,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3477,12 +4203,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block11_conv0_scale"
   type: "Scale"
   bottom: "group1_block11_conv0"
   top: "group1_block11_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3504,6 +4241,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3529,12 +4267,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block11_conv1_scale"
   type: "Scale"
   bottom: "group1_block11_conv1"
   top: "group1_block11_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3566,6 +4315,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3591,12 +4341,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block12_conv0_scale"
   type: "Scale"
   bottom: "group1_block12_conv0"
   top: "group1_block12_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3618,6 +4379,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3643,12 +4405,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block12_conv1_scale"
   type: "Scale"
   bottom: "group1_block12_conv1"
   top: "group1_block12_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3680,6 +4453,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3705,12 +4479,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block13_conv0_scale"
   type: "Scale"
   bottom: "group1_block13_conv0"
   top: "group1_block13_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3732,6 +4517,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3757,12 +4543,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block13_conv1_scale"
   type: "Scale"
   bottom: "group1_block13_conv1"
   top: "group1_block13_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3794,6 +4591,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3819,12 +4617,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block14_conv0_scale"
   type: "Scale"
   bottom: "group1_block14_conv0"
   top: "group1_block14_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3846,6 +4655,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3871,12 +4681,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block14_conv1_scale"
   type: "Scale"
   bottom: "group1_block14_conv1"
   top: "group1_block14_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3908,6 +4729,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3933,12 +4755,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block15_conv0_scale"
   type: "Scale"
   bottom: "group1_block15_conv0"
   top: "group1_block15_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -3960,6 +4793,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -3985,12 +4819,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block15_conv1_scale"
   type: "Scale"
   bottom: "group1_block15_conv1"
   top: "group1_block15_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4022,6 +4867,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4047,12 +4893,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block16_conv0_scale"
   type: "Scale"
   bottom: "group1_block16_conv0"
   top: "group1_block16_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4074,6 +4931,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4099,12 +4957,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block16_conv1_scale"
   type: "Scale"
   bottom: "group1_block16_conv1"
   top: "group1_block16_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4136,6 +5005,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4161,12 +5031,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block17_conv0_scale"
   type: "Scale"
   bottom: "group1_block17_conv0"
   top: "group1_block17_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4188,6 +5069,7 @@ layer {
   }
   convolution_param {
     num_output: 32
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4213,12 +5095,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group1_block17_conv1_scale"
   type: "Scale"
   bottom: "group1_block17_conv1"
   top: "group1_block17_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4250,6 +5143,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 2
@@ -4275,12 +5169,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block0_conv0_scale"
   type: "Scale"
   bottom: "group2_block0_conv0"
   top: "group2_block0_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4302,6 +5207,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4327,12 +5233,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block0_conv1_scale"
   type: "Scale"
   bottom: "group2_block0_conv1"
   top: "group2_block0_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4348,6 +5265,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 0
     kernel_size: 1
     stride: 2
@@ -4373,12 +5291,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block0_proj_scale"
   type: "Scale"
   bottom: "group2_block0_proj"
   top: "group2_block0_proj"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4410,6 +5339,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4435,12 +5365,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block1_conv0_scale"
   type: "Scale"
   bottom: "group2_block1_conv0"
   top: "group2_block1_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4462,6 +5403,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4487,12 +5429,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block1_conv1_scale"
   type: "Scale"
   bottom: "group2_block1_conv1"
   top: "group2_block1_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4524,6 +5477,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4549,12 +5503,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block2_conv0_scale"
   type: "Scale"
   bottom: "group2_block2_conv0"
   top: "group2_block2_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4576,6 +5541,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4601,12 +5567,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block2_conv1_scale"
   type: "Scale"
   bottom: "group2_block2_conv1"
   top: "group2_block2_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4638,6 +5615,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4663,12 +5641,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block3_conv0_scale"
   type: "Scale"
   bottom: "group2_block3_conv0"
   top: "group2_block3_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4690,6 +5679,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4715,12 +5705,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block3_conv1_scale"
   type: "Scale"
   bottom: "group2_block3_conv1"
   top: "group2_block3_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4752,6 +5753,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4777,12 +5779,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block4_conv0_scale"
   type: "Scale"
   bottom: "group2_block4_conv0"
   top: "group2_block4_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4804,6 +5817,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4829,12 +5843,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block4_conv1_scale"
   type: "Scale"
   bottom: "group2_block4_conv1"
   top: "group2_block4_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4866,6 +5891,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4891,12 +5917,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block5_conv0_scale"
   type: "Scale"
   bottom: "group2_block5_conv0"
   top: "group2_block5_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4918,6 +5955,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -4943,12 +5981,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block5_conv1_scale"
   type: "Scale"
   bottom: "group2_block5_conv1"
   top: "group2_block5_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -4980,6 +6029,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5005,12 +6055,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block6_conv0_scale"
   type: "Scale"
   bottom: "group2_block6_conv0"
   top: "group2_block6_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5032,6 +6093,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5057,12 +6119,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block6_conv1_scale"
   type: "Scale"
   bottom: "group2_block6_conv1"
   top: "group2_block6_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5094,6 +6167,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5119,12 +6193,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block7_conv0_scale"
   type: "Scale"
   bottom: "group2_block7_conv0"
   top: "group2_block7_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5146,6 +6231,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5171,12 +6257,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block7_conv1_scale"
   type: "Scale"
   bottom: "group2_block7_conv1"
   top: "group2_block7_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5208,6 +6305,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5233,12 +6331,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block8_conv0_scale"
   type: "Scale"
   bottom: "group2_block8_conv0"
   top: "group2_block8_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5260,6 +6369,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5285,12 +6395,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block8_conv1_scale"
   type: "Scale"
   bottom: "group2_block8_conv1"
   top: "group2_block8_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5322,6 +6443,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5347,12 +6469,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block9_conv0_scale"
   type: "Scale"
   bottom: "group2_block9_conv0"
   top: "group2_block9_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5374,6 +6507,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5399,12 +6533,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block9_conv1_scale"
   type: "Scale"
   bottom: "group2_block9_conv1"
   top: "group2_block9_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5436,6 +6581,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5461,12 +6607,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block10_conv0_scale"
   type: "Scale"
   bottom: "group2_block10_conv0"
   top: "group2_block10_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5488,6 +6645,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5513,12 +6671,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block10_conv1_scale"
   type: "Scale"
   bottom: "group2_block10_conv1"
   top: "group2_block10_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5550,6 +6719,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5575,12 +6745,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block11_conv0_scale"
   type: "Scale"
   bottom: "group2_block11_conv0"
   top: "group2_block11_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5602,6 +6783,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5627,12 +6809,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block11_conv1_scale"
   type: "Scale"
   bottom: "group2_block11_conv1"
   top: "group2_block11_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5664,6 +6857,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5689,12 +6883,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block12_conv0_scale"
   type: "Scale"
   bottom: "group2_block12_conv0"
   top: "group2_block12_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5716,6 +6921,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5741,12 +6947,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block12_conv1_scale"
   type: "Scale"
   bottom: "group2_block12_conv1"
   top: "group2_block12_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5778,6 +6995,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5803,12 +7021,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block13_conv0_scale"
   type: "Scale"
   bottom: "group2_block13_conv0"
   top: "group2_block13_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5830,6 +7059,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5855,12 +7085,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block13_conv1_scale"
   type: "Scale"
   bottom: "group2_block13_conv1"
   top: "group2_block13_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5892,6 +7133,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5917,12 +7159,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block14_conv0_scale"
   type: "Scale"
   bottom: "group2_block14_conv0"
   top: "group2_block14_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -5944,6 +7197,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -5969,12 +7223,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block14_conv1_scale"
   type: "Scale"
   bottom: "group2_block14_conv1"
   top: "group2_block14_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -6006,6 +7271,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -6031,12 +7297,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block15_conv0_scale"
   type: "Scale"
   bottom: "group2_block15_conv0"
   top: "group2_block15_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -6058,6 +7335,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -6083,12 +7361,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block15_conv1_scale"
   type: "Scale"
   bottom: "group2_block15_conv1"
   top: "group2_block15_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -6120,6 +7409,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -6145,12 +7435,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block16_conv0_scale"
   type: "Scale"
   bottom: "group2_block16_conv0"
   top: "group2_block16_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -6172,6 +7473,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -6197,12 +7499,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block16_conv1_scale"
   type: "Scale"
   bottom: "group2_block16_conv1"
   top: "group2_block16_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -6234,6 +7547,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -6259,12 +7573,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block17_conv0_scale"
   type: "Scale"
   bottom: "group2_block17_conv0"
   top: "group2_block17_conv0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
@@ -6286,6 +7611,7 @@ layer {
   }
   convolution_param {
     num_output: 64
+    bias_term: false
     pad: 1
     kernel_size: 3
     stride: 1
@@ -6311,12 +7637,23 @@ layer {
     lr_mult: 0
     decay_mult: 0
   }
+  batch_norm_param {
+    moving_average_fraction: 0.9
+  }
 }
 layer {
   name: "group2_block17_conv1_scale"
   type: "Scale"
   bottom: "group2_block17_conv1"
   top: "group2_block17_conv1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
   scale_param {
     bias_term: true
   }
