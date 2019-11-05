@@ -1,7 +1,7 @@
 # ResNet 20/32/44/56/110 for CIFAR10 with caffe 
 ### Testing
 ```Shell
-~/caffe/build/tools/caffe test -gpu 0 -iteartions 100 -model resnet-20/trainval.prototxt -weights resnet-20/snapshot/solver_iter_64000.caffemodel 
+~/caffe/build/tools/caffe test -gpu 0 -iterations 100 -model resnet-20/trainval.prototxt -weights resnet-20/snapshot/solver_iter_64000.caffemodel 
 ```
 | Model                                                                                                    |  Acc | Claimed Acc|
 |:---------------------------------------------------------------------------------------------------------|:-----------:|:-------------:|
