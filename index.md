@@ -3,6 +3,7 @@
 ```Shell
 ~/caffe/build/tools/caffe test -gpu 0 -iterations 100 -model resnet-20/trainval.prototxt -weights resnet-20/snapshot/solver_iter_64000.caffemodel 
 ```
+
 | Model                                                                                                    |  Acc | Claimed Acc|
 |:---------------------------------------------------------------------------------------------------------|:-----------:|:-------------:|
 | [ResNet-20](https://github.com/yihui-he/resnet-cifar10-caffe/releases/download/1.0/resnet20_iter_64000.caffemodel) | 91.4%       | 91.25%         |
@@ -39,8 +40,8 @@ python plot.py PATH/TO/LOGS
 Results are consistent with original paper. seems there's no much difference between resnet-20 and plain-20. However, from the second plot, you can see that plain-110 have difficulty to converge.
 
 <p float="left">
-  <img src="plots/resnet-20__2016-08-14_00-25-56plain_orth20__2016-08-14_15-34-29.png" width="400" />
-  <img src="plots/resnet-110__2016-08-15_10-12-25plain110__2016-08-15_10-11-55.png" width="400" /> 
+  <img src="https://raw.githubusercontent.com/yihui-he/resnet-cifar10-caffe/master/plots/resnet-20__2016-08-14_00-25-56plain_orth20__2016-08-14_15-34-29.png" width="400" />
+  <img src="https://raw.githubusercontent.com/yihui-he/resnet-cifar10-caffe/master/plots/resnet-110__2016-08-15_10-12-25plain110__2016-08-15_10-11-55.png" width="400" /> 
 </p>
 
 ### How I generate prototxts:
